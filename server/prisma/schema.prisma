@@ -1,0 +1,42 @@
+// prisma/schema.prisma
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL") // Use .env to store your database URL
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Faculty Model
+model Faculty {
+  id          Int         @id @default(autoincrement())
+  facultyId   String      @unique
+  name        String
+  attendances Attendance[] @relation("FacultyAttendances") // Add the relation name for clarity
+}
+
+// Student Model
+model Student {
+  id          Int         @id @default(autoincrement())
+  studentId   String      @unique
+  name        String
+  section     String
+  attendances Attendance[] @relation("StudentAttendances") // Add the relation name for clarity
+}
+
+// Attendance Model
+model Attendance {
+  id        Int       @id @default(autoincrement())
+  studentId String?  // Nullable to accommodate faculty attendance entries
+  name      String    // You might consider making this required
+  date      DateTime
+  timeIn    DateTime
+  isFaculty Boolean
+  section   String
+  
+  student   Student?  @relation(fields: [studentId], references: [studentId], name: "StudentAttendances")
+  facultyId String?  // Nullable to allow entries without a faculty
+  faculty   Faculty?  @relation(fields: [facultyId], references: [facultyId], name: "FacultyAttendances") // Added the relation name
+}
