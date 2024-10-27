@@ -2,12 +2,7 @@
   "version": 2,
   "name": "music-album",
   "builds": [
-    { "src": "server.js", "use": "@vercel/node" },
-    {
-      "env": {
-        "DATABASE_URL": "postgresql://postgres.oqwjofnjmwckkexeurbw:DinesH@po12@aws-0-ap-south-1.pooler.supabase.com:5432/postgres"
-      }
-    }
+    { "src": "server.js", "use": "@vercel/node" }
   ],
   "routes": [{ "src": "/(.*)", "dest": "/server.js" }]
 }
