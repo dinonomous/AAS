@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 const prisma = new PrismaClient();
 const allowedOrigins = [
     'https://your-frontend-url.vercel.app',
-    'http://192.168.1.100'
+    'http://192.168.210.169'
 ];
 
 app.use(cors({
