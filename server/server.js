@@ -6,11 +6,11 @@ const cors = require("cors");
 const { PrismaClient } = require("@prisma/client");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3100;
 const prisma = new PrismaClient();
 const allowedOrigins = [
   "https://aasfe.vercel.app",
-  "http://192.168.51.169",
+  "http://192.168.78.169",
 ];
 
 app.use(
