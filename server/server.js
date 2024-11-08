@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3100;
 const prisma = new PrismaClient();
 const allowedOrigins = [
   "https://aasfe.vercel.app",
-  "http://192.168.78.169",
+  "http://192.168.76.169",
 ];
 
 app.use(
